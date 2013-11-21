@@ -1,0 +1,4 @@
+[submodule "puppet"]
+	path = puppet
+	url = git@github.com:ianunruh/ancor-puppet.git
+	branch = v2

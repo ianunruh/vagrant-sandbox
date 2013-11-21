@@ -1,0 +1,10 @@
+---
+:hierarchy:
+  - "%{::fqdn}"
+  - globals
+
+:backends:
+  - yaml
+
+:yaml:
+  :datadir: /vagrant/hiera
