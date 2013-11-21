@@ -1,11 +1,13 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure VAGRANTFILE_API_VERSION do |config|
-  config.vm.box = "raring64"
-  config.vm.box_url = "https://dl.dropboxusercontent.com/u/547671/thinkstack-raring64.box"
+  config.vm.box = "ancor-raring64"
+  config.vm.box_url = "https://ianunruh.s3.amazonaws.com/vagrant/ancor-raring64.box"
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "512"]
+    vb.customize ["modifyvm", :id, "--cpus", "2"]
+    vb.customize ["modifyvm", :id, "--ioapic", "on"]
   end
 
   config.vm.provision :puppet do |puppet|

@@ -1,7 +1,7 @@
 ---
 :hierarchy:
   - "%{::fqdn}"
-  - globals
+  - global
 
 :backends:
   - yaml
