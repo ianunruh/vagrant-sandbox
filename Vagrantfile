@@ -17,23 +17,17 @@ Vagrant.configure VAGRANTFILE_API_VERSION do |config|
     puppet.options = "--verbose --hiera_config /vagrant/hiera.yaml"
   end
 
-  config.vm.define :houston do |sc|
-    sc.vm.hostname = "houston.vboxlocal"
-    sc.vm.network :private_network, ip: "192.168.56.10"
-  end
+  boxes = {
+    houston: "192.168.56.10",
+    toledo: "192.168.56.11",
+    irvine: "192.168.56.12",
+    aurora: "192.168.56.13",
+  }
 
-  config.vm.define :toledo do |sc|
-    sc.vm.hostname = "toledo.vboxlocal"
-    sc.vm.network :private_network, ip: "192.168.56.11"
-  end
-
-  config.vm.define :irvine do |sc|
-    sc.vm.hostname = "irvine.vboxlocal"
-    sc.vm.network :private_network, ip: "192.168.56.12"
-  end
-
-  config.vm.define :aurora do |sc|
-    sc.vm.hostname = "aurora.vboxlocal"
-    sc.vm.network :private_network, ip: "192.168.56.13"
+  boxes.each do |name, ip|
+    config.vm.define name do |box|
+      box.vm.hostname = "#{name}.vboxlocal"
+      box.vm.network :private_network, ip: ip
+    end
   end
 end
