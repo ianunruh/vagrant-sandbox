@@ -1,0 +1,11 @@
+classes:
+  - role::db_slave::default
+
+exports:
+  querying: { port: 3306 }
+
+imports:
+  db_master:
+    houston:
+      ip_address: 192.168.56.10
+      querying: { port: 3306 }

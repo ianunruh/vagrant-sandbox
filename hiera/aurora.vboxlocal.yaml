@@ -1,0 +1,22 @@
+classes:
+  - role::webapp::default
+
+exports:
+  http: { port: 80 }
+
+imports:
+  db_master:
+    houston:
+      ip_address: 192.168.56.10
+      querying: { port: 3306 }
+  db_slave:
+    toledo:
+      ip_address: 192.168.56.11
+      querying: { port: 3306 }
+    irvine:
+      ip_address: 192.168.56.12
+      querying: { port: 3306 }
+  work_queue:
+    spokane:
+      ip_address: 192.168.56.14
+      redis: { port: 6379 }

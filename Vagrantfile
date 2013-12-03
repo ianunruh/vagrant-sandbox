@@ -5,9 +5,10 @@ Vagrant.configure VAGRANTFILE_API_VERSION do |config|
   config.vm.box_url = "https://ianunruh.s3.amazonaws.com/vagrant/ancor-raring64.box"
 
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "512"]
+    vb.customize ["modifyvm", :id, "--memory", "384"]
     vb.customize ["modifyvm", :id, "--cpus", "2"]
     vb.customize ["modifyvm", :id, "--ioapic", "on"]
+    vb.customize ["modifyvm", :id, "--natdnsproxy1", "on", "--natdnshostresolver1", "on"]
   end
 
   config.vm.provision :puppet do |puppet|
@@ -22,6 +23,8 @@ Vagrant.configure VAGRANTFILE_API_VERSION do |config|
     toledo: "192.168.56.11",
     irvine: "192.168.56.12",
     aurora: "192.168.56.13",
+    spokane: "192.168.56.14",
+    newark: "192.168.56.15",
   }
 
   boxes.each do |name, ip|
