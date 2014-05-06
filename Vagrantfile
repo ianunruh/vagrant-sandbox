@@ -5,7 +5,7 @@ Vagrant.configure VAGRANTFILE_API_VERSION do |config|
   config.vm.box_url = "https://ianunruh.s3.amazonaws.com/vagrant/ancor-raring64.box"
 
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "384"]
+    vb.customize ["modifyvm", :id, "--memory", "768"]
     vb.customize ["modifyvm", :id, "--cpus", "2"]
     vb.customize ["modifyvm", :id, "--ioapic", "on"]
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "on", "--natdnshostresolver1", "on"]
@@ -15,7 +15,11 @@ Vagrant.configure VAGRANTFILE_API_VERSION do |config|
     puppet.module_path = "puppet/modules"
     puppet.manifests_path = "puppet/manifests"
     puppet.manifest_file = "site.pp"
-    puppet.options = "--verbose --hiera_config /vagrant/hiera.yaml"
+    puppet.options = [
+      "--verbose",
+      "--hiera_config", "/vagrant/hiera.yaml",
+      "--templatedir",  "/vagrant/puppet/templates"
+    ]
   end
 
   boxes = {

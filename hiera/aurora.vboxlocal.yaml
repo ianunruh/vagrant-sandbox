@@ -1,5 +1,5 @@
 classes:
-  - role::webapp::default
+  - role::ecommerce::webapp::default
 
 exports:
   http: { port: 80 }

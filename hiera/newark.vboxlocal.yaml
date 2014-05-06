@@ -1,5 +1,5 @@
 classes:
-  - role::worker::default
+  - role::ecommerce::worker::default
 
 imports:
   db_master:

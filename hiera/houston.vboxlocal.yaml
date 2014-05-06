@@ -1,5 +1,5 @@
 classes:
-  - role::db_master::default
+  - role::ecommerce::db_master::default
 
 exports:
   querying: { port: 3306 }

@@ -1,5 +1,5 @@
 classes:
-  - role::work_queue::default
+  - role::ecommerce::work_queue::default
 
 exports:
   redis: { port: 6379 }
